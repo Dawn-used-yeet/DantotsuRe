@@ -23,7 +23,7 @@ jobs:
           sudo apt install gh -y
 
       - name: Authenticate with GitHub CLI
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+        run: echo "${{secrets.FINE_GRAIN_TOKEN}}" | gh auth login --with-token
 
       - name: Get latest release download URLs
         run: |
