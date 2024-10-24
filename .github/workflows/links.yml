@@ -27,7 +27,7 @@ jobs:
 
       - name: Get latest release download URLs
         run: |
-          gh release view --repo ${{github.repository}} latest --json assets --jq '.assets[].url' > download_urls.txt
+          gh release view --repo ${{github.repository}} v0.4.0 --json assets --jq '.assets[].url' > download_urls.txt
         env:
           GITHUB_TOKEN: ${{secrets.FINE_GRAIN_TOKEN}}
 
