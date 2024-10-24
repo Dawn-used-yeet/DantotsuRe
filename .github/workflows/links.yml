@@ -1,0 +1,25 @@
+name: Fetch Release Assets
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  fetch-assets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get Release Assets
+        id: get_assets
+        run: |
+          curl -s -H "Authorization: token ${{ secrets.FINE_GRAIN_TOKEN}}" \
+          https://api.github.com/repos/${{ github.repository }}/releases/latest \
+          | jq -r '.assets[] | .browser_download_url' > assets.txt
+
+      - name: Show Asset URLs
+        run: |
+          cat assets.txt
