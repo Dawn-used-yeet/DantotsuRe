@@ -16,8 +16,8 @@ jobs:
       - name: Get Release Assets
         id: get_assets
         run: |
-          curl -s -H "Authorization: token ${{ secrets.FINE_GRAIN_TOKEN}}" \
-          https://api.github.com/repos/${{ github.repository }}/releases/latest \
+          curl -s -H "Authorization: token ${{secrets.FINE_GRAIN_TOKEN}}" \
+          https://api.github.com/repos/${{github.repository}}/releases/latest \
           | jq -r '.assets[] | .browser_download_url' > assets.txt
 
       - name: Show Asset URLs
